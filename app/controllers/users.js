@@ -40,6 +40,7 @@ const makeErrorHandler = (res, next) =>
     next(error);
 
 const signup = (req, res, next) => {
+  console.log(req.body);
   let credentials = req.body.credentials;
   let user = { email: credentials.email };
   getToken().then(token =>
@@ -56,6 +57,7 @@ const signup = (req, res, next) => {
 };
 
 const signin = (req, res, next) => {
+  console.log(req.body);
   let credentials = req.body.credentials;
   let search = { email: credentials.email };
   User.findOne(search
