@@ -70,7 +70,7 @@ module.exports = controller({
   update,
   destroy
 }, { before: [
-  { method: authenticate, except: ['index', 'create'] },
+  { method: authenticate, except: ['index'] },
   { method: multerStorage.single('image[file]'), only: ['create'] },
   { method: multerStorage.single('image'), only: ['update'] }
 ], });
