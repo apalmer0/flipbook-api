@@ -20,15 +20,19 @@ const index = (req, res, next) => {
 
 const create = (req, res, next) => {
   console.log('is this thing on?');
+  console.log('body');
   console.log(req.body);
+  console.log('*****');
+  console.log('file');
   console.log(req.file);
-  console.log(req.currentUser);
+  console.log('*****');
   let file = Object.assign(req.file, {
     name: req.file.originalname,
     // _owner: req.currentUser._id,
   });
   awsS3Upload(file)
     .then(file => res.json({ file }))
+    // .then(file => console.log(file))
     .catch(err => next(err));
 };
 
