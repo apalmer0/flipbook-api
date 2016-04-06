@@ -19,13 +19,13 @@ const index = (req, res, next) => {
 };
 
 const create = (req, res, next) => {
+  console.log('is this thing on?');
+  console.log(req.body);
+  console.log(req.file);
+  console.log(req.currentUser);
   let file = Object.assign(req.file, {
     name: req.file.originalname,
-    folder: req.body.image.folder,
-    comment: req.body.image.comment,
-    tagsArray: req.body.image.tags.split(', '),
-    ownerName: req.currentUser.fullName,
-    _owner: req.currentUser._id,
+    // _owner: req.currentUser._id,
   });
   awsS3Upload(file)
     .then(file => res.json({ file }))
@@ -73,7 +73,7 @@ module.exports = controller({
   update,
   destroy
 }, { before: [
-  { method: authenticate },
+  { method: authenticate, except: ['index', 'create'] },
   { method: multerStorage.single('image[file]'), only: ['create'] },
   { method: multerStorage.single('image'), only: ['update'] }
 ], });

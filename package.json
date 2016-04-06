@@ -6,6 +6,7 @@
     "start": "./bin/express server"
   },
   "dependencies": {
+    "aws-sdk": "^2.2.42",
     "bcrypt": "^0.8.5",
     "body-parser": "~1.13.2",
     "cors": "^2.7.1",
@@ -15,6 +16,7 @@
     "mongoose": "^4.4.6",
     "mongoose-unique-validator": "^1.0.2",
     "morgan": "~1.6.1",
+    "multer": "^1.1.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
