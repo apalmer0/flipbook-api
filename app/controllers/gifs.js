@@ -12,6 +12,7 @@ const multerStorage = multer({ storage: multer.memoryStorage() });
 
 const index = (req, res, next) => {
   console.log('start gif index');
+  console.log(req.currentUser);
   let gifFilter = { _owner: req.currentUser };
   Gif.find(gifFilter)
     .then(gifs => res.json({ gifs }))
@@ -72,7 +73,7 @@ module.exports = controller({
   update,
   destroy
 }, { before: [
-  { method: authenticate, except: ['index'] },
+  { method: authenticate },
   { method: multerStorage.single('gif[file]'), only: ['create'] },
   { method: multerStorage.single('gif'), only: ['update'] }
 ], });
