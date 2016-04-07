@@ -20,12 +20,10 @@ const index = (req, res, next) => {
 
 const create = (req, res, next) => {
   console.log('gif create');
-  console.log(req.file);
-  console.log(req.body.gif.name);
   let file = Object.assign(req.file, {
     name: req.body.gif.name,
     comment: req.body.gif.comment,
-    // _owner: req.currentUser._id,
+    _owner: req.currentUser._id,
   });
   awsS3Upload(file)
     .then(file => res.json({ file }))
@@ -74,7 +72,7 @@ module.exports = controller({
   update,
   destroy
 }, { before: [
-  { method: authenticate, except: ['index', 'create'] },
+  { method: authenticate, except: ['index'] },
   { method: multerStorage.single('gif[file]'), only: ['create'] },
   { method: multerStorage.single('gif'), only: ['update'] }
 ], });
