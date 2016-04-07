@@ -3,8 +3,15 @@
 const mongoose = require('mongoose');
 
 const gifSchema = new mongoose.Schema({
-  images: {
-    type: Array,
+  name: {
+    type: String,
+    required: true,
+  },
+  comment: {
+    type: String
+  },
+  location: {
+    type: String,
     required: true,
   },
   // _owner: {

@@ -2,9 +2,13 @@
 
 const controller = require('lib/wiring/controller');
 const models = require('app/models');
+const awsS3Upload = require('../../lib/awsS3Upload-gif');
 const authenticate = require('./concerns/authenticate');
 
 const Gif = models.gif;
+
+const multer = require('multer'); //
+const multerStorage = multer({ storage: multer.memoryStorage() });
 
 const index = (req, res, next) => {
   console.log('start gif index');
@@ -16,7 +20,16 @@ const index = (req, res, next) => {
 
 const create = (req, res, next) => {
   console.log('gif create');
-  console.log(req.body);
+  console.log(req.file);
+  console.log(req.body.gif.name);
+  let file = Object.assign(req.file, {
+    name: req.body.gif.name,
+    comment: req.body.gif.comment,
+    // _owner: req.currentUser._id,
+  });
+  awsS3Upload(file)
+    .then(file => res.json({ file }))
+    .catch(err => next(err));
 
 };
 
@@ -62,4 +75,6 @@ module.exports = controller({
   destroy
 }, { before: [
   { method: authenticate, except: ['index', 'create'] },
+  { method: multerStorage.single('gif[file]'), only: ['create'] },
+  { method: multerStorage.single('gif'), only: ['update'] }
 ], });

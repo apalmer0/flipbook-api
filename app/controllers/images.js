@@ -2,7 +2,7 @@
 
 const controller = require('lib/wiring/controller');
 const models = require('app/models');
-const awsS3Upload = require('../../lib/awsS3Upload');
+const awsS3Upload = require('../../lib/awsS3Upload-image');
 const authenticate = require('./concerns/authenticate');
 
 const Image = models.image;
