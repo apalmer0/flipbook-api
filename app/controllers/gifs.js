@@ -23,6 +23,7 @@ const create = (req, res, next) => {
   let file = Object.assign(req.file, {
     name: req.body.gif.name,
     comment: req.body.gif.comment,
+    src: req.body.gif.src,
     _owner: req.currentUser._id,
   });
   awsS3Upload(file)
@@ -32,6 +33,9 @@ const create = (req, res, next) => {
 };
 
 const show = (req, res, next) => {
+  console.log('show');
+  console.log(req.params.id);
+  console.log(req.currentUser);
   Gif.findOne({ _id: req.params.id, _owner: req.currentUser })
     .then(gif => String(gif._owner) === String(req.currentUser._id) ? gif : next())
     .then(gif => gif ? res.json({ gif }) : next())
