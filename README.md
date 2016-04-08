@@ -1,4 +1,4 @@
-![Logo](app/images/logo.png?raw=true)
+![Logo](lib/images/logo.png?raw=true)
 
 # flipbook - api
 
@@ -54,18 +54,18 @@ After `npm install` run `grunt` for building and `grunt serve` for preview.
 ## Wireframes
 
 Homepage
-![Create GIF experience](app/images/homepage.JPG?raw=true)
+![Create GIF experience](lib/images/homepage.JPG?raw=true)
 
 Creating a GIF
-![Create GIF experience](app/images/create_gif.JPG?raw=true)
+![Create GIF experience](lib/images/create_gif.JPG?raw=true)
 
 ## Screenshots
 
 Homepage
-![Homepage experience](app/images/homepage_screenshot.png?raw=true)
+![Homepage experience](lib/images/homepage_screenshot.png?raw=true)
 
 Create GIF
-![Create GIF experience](app/images/create_screenshot.png?raw=true)
+![Create GIF experience](lib/images/create_screenshot.png?raw=true)
 
 GIF Gallery
-![GIF Gallery experience](app/images/gallery_screenshot.png?raw=true)
+![GIF Gallery experience](lib/images/gallery_screenshot.png?raw=true)
