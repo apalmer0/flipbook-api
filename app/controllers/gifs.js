@@ -12,7 +12,6 @@ const multerStorage = multer({ storage: multer.memoryStorage() });
 
 const index = (req, res, next) => {
   console.log('start gif index');
-  console.log(req.currentUser);
   let gifFilter = { _owner: req.currentUser };
   Gif.find(gifFilter)
     .then(gifs => res.json({ gifs }))
@@ -40,28 +39,30 @@ const show = (req, res, next) => {
 };
 
 const update = (req, res, next) => {
+  console.log('update');
+  console.log(req.body);
+
   Gif.findOne({ _id: req.params.id, _owner: req.currentUser })
     .then(gif => {
       if (!gif) {
+        console.log('didnt find the gif');
         return next();
       }
       console.log(gif);
+
       return gif.update(req.body)
+        .then(updateResult => console.log(updateResult))
         .then(() => res.sendStatus(200));
     })
     .catch(err => next(err));
 };
 
 const destroy = (req, res, next) => {
-
   Gif.findOne({ _id: req.params.id, _owner: req.currentUser })
 
   .then((gif) => {
     gif.remove();
     res.json(true);
-  // // .then((gif) =>
-  // //   gif.location
-  // // ).then(awsDelete)
   })
   .catch(err => next(err));
 };
