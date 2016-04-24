@@ -1,18 +1,23 @@
-![Logo](lib/images/logo.png?raw=true)
+![Logo](logo_small.png)
 
 # flipbook - api
 
-flipbook is a tool for 'bringing your images to life', with which a user could
-upload an image and, using some basic drawing tools, create an animated gif
-on top of that image. If no image frames are selected for the GIF, the user can
-instead use their webcam to create the GIF of themselves. A simple caption can
+## Hosted on Github pages
+
+View app/API here:
+<br>[flipbook: Client](http://apalmer0.github.io/gym-news-front-end/index.html)
+<br>[flipbook: API](https://gym-news.herokuapp.com/)
+
+## About
+
+flipbook is a tool for 'bringing your images to life'. With it, a user can
+make a basic sketch on a blank canvas or upload an image and sketch on that,
+and save each drawing as a 'frame' that
+can be compiled into an animated GIF, like a
+flipbook. If no image frames are selected for the GIF, the user can
+use their webcam to create the GIF of themselves. In addition,
+a simple caption can
 be written, stylized, and placed on top of the GIF itself for added hilarity.
-
-## Technology Used
-
-flipbook's client side is written with Angular, Bootstrap, HTML5, and Sass. The
-api is written with a MongoDB database, along with Express and Node.js for the
-full MEAN stack experience.
 
 ## General Approach
 
@@ -29,6 +34,46 @@ when no deliverable is actually due.
 Regarding the app itself - I wanted to build a tool that did something fun, and
 I wanted to tinker with an idea I had for my side project; this was a first
 draft of that idea.
+
+Things I would do with more time:
+
+-   Refactor my code. It's pretty apparent that I taught myself
+  Angular for this project. Towards the end I began to understand
+  the framework better and realized how a lot of code was misplaced,
+  so I'd like to go back and clean that up.
+-   It'd be cool if a user could select an
+image to sketch on rather than uploading their own. I'd like to add
+that feature and create a 'gallery' from which a user
+can choose the background image of their GIF.
+-   It'd also be cool to add a 'share' feature, that allows a user
+to email/post/whatever their GIFs to their friends.
+-   Currently the app is not mobile friendly. That should change.
+
+## Planning
+
+**Relationships & User Stories**
+
+![Relationships & User Stories](relationships.png)
+
+## Live Screenshot
+
+**Homepage**
+
+![Homepage experience](screenshot_homepage.png)
+
+**Creating a GIF**
+
+![Create GIF experience](screenshot_create_gif.png)
+
+**GIF Gallery**
+
+![GIF Gallery experience](screenshot_gallery.png)
+
+## Technology Used
+
+flipbook's client side is written with Angular, Bootstrap, HTML5, and Sass. The
+api is written with a MongoDB database, along with Express and Node.js for the
+full MEAN stack experience.
 
 ## User Stories
 
@@ -49,23 +94,4 @@ Generally speaking, a user can:
 
 ## Installation
 
-After `npm install` run `grunt` for building and `grunt serve` for preview.
-
-## Wireframes
-
-Homepage
-![Create GIF experience](lib/images/homepage.JPG?raw=true)
-
-Creating a GIF
-![Create GIF experience](lib/images/create_gif.JPG?raw=true)
-
-## Screenshots
-
-Homepage
-![Homepage experience](lib/images/homepage_screenshot.png?raw=true)
-
-Create GIF
-![Create GIF experience](lib/images/create_screenshot.png?raw=true)
-
-GIF Gallery
-![GIF Gallery experience](lib/images/gallery_screenshot.png?raw=true)
+After forking/cloning, run `mongod` and `nodemon` to run Mongoose locally.
